@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Table from './Table'
 
 function App() {
+  const employees = [
+    { name: 'Santanu', job: 'QI' },
+    { name: 'Jayanta', job: 'QI' },
+    { name: 'Abhiskek', job: 'QI' },
+    { name: 'Bikram', job: 'QI' }
+  ];
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <Table employees={employees} employeeCount={100} />
+      </div>
     </div>
   );
 }
