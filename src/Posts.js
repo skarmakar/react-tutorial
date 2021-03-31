@@ -1,16 +1,12 @@
 // useEffect to cause side effects
 import React, { useState, useEffect, Fragment } from 'react';
 import getList from './services/get_list';
+import Post from './Post';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const postTableRows = posts.map((post) =>{
-    return(
-      <tr key={post.id}>
-        <td>{post.title}</td>
-        <td>{post.body}</td>
-      </tr>
-    )
+    return <Post post={post} key={post.id}/>
   });
 
   useEffect(() => {
