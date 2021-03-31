@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TableBody = (props) => {
-  const { employees } = props;
-
-  const tableRows = employees.map((employee, index) => {
+  const tableRows = props.employees.map((employee, index) => {
     return (
       <tr key={index}>
         <td>{employee.name}</td>
         <td>{employee.job}</td>
+        <td><a className='button' onClick={() => props.deleteHandler(index)}>Delete</a></td>
       </tr>
     )
   });
@@ -21,7 +20,8 @@ const TableBody = (props) => {
 }
 
 TableBody.propTypes = {
-  employees: PropTypes.array
+  employees: PropTypes.array,
+  deleteHandler: PropTypes.func
 }
 
 export default TableBody;

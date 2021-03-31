@@ -13,14 +13,16 @@ const Table = (props) => {
             <th>Job</th>
           </tr>
         </thead>
-        <TableBody {...props} />
+        <TableBody employees={props.employees} deleteHandler={props.deleteHandler} />
       </table>
     </Fragment>
   )
 }
 
 Table.propTypes = {
-  employeeCount: PropTypes.number
+  employeeCount: PropTypes.number,
+  employees: PropTypes.array,
+  deleteHandler: PropTypes.func
 }
 
 export default Table;
