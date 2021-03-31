@@ -11,6 +11,7 @@ const Table = (props) => {
           <tr>
             <th>Name</th>
             <th>Job</th>
+            <th></th>
           </tr>
         </thead>
         <TableBody employees={props.employees} deleteHandler={props.deleteHandler} />
