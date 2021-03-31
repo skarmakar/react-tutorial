@@ -5,8 +5,9 @@ import './App.css';
 
 import Posts from './Posts';
 import Users from './Users';
+import Home from './Home';
 
-import {BrowserRouter, Link, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, NavLink, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
@@ -16,15 +17,16 @@ function App() {
           <header>
             <nav>
               <ul>
-                <li><Link to={'/'} className="nav-link">Home</Link></li>
-                <li><Link to={'/posts'} className="nav-link">Posts</Link></li>
-                <li><Link to={'/users'} className="nav-link">Users</Link></li>
+                <li><NavLink to={'/'} className="nav-link" exact>Home</NavLink></li>
+                <li><NavLink to={'/posts'} className="nav-link">Posts</NavLink></li>
+                <li><NavLink to={'/users'} className="nav-link">Users</NavLink></li>
               </ul>
             </nav>
           </header>
         </div>
       </div>
       <Switch>
+        <Route exact path='/' component={Home} />
         <Route exact path='/posts' component={Posts} />
         <Route exact path='/users' component={Users} />
       </Switch>
