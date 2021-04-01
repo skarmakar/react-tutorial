@@ -3,8 +3,8 @@ import './App.css';
 // import Table from './Table'
 // import EmployeeForm from './EmployeeForm';
 
-import Posts from './Posts';
-import Users from './Users';
+import Posts from './Post/Posts';
+import Users from './User/Users';
 import Home from './Home';
 
 import {BrowserRouter, NavLink, Route, Switch} from 'react-router-dom';

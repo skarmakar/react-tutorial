@@ -1,6 +1,6 @@
 // useEffect to cause side effects
 import React, { useState, useEffect, Fragment } from 'react';
-import getList from './services/get_list';
+import { getItems } from '../services/get_list';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -22,7 +22,7 @@ const Users = () => {
 
   useEffect(() => {
     let mounted = true;
-    getList('users').then(items => {
+    getItems('users').then(items => {
       if(mounted){
         setUsers(items);
       }

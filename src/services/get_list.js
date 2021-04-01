@@ -1,6 +1,17 @@
-const getList = (endpoint) => {
+const getItems = (endpoint) => {
   return fetch(`https://jsonplaceholder.typicode.com/${endpoint}`)
-    .then(data => data.json())
-}
+    .then(response => response.json())
+};
 
-export default getList;
+const postItem = (endpoint, payload) => {
+  return fetch(`https://jsonplaceholder.typicode.com/${endpoint}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(response => response.json())
+};
+
+export { getItems, postItem };
