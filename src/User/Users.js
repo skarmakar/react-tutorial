@@ -34,7 +34,7 @@ const Users = () => {
   return (
     <Fragment>
       <h1>Users</h1>
-      <table>
+      <table className="table table-bordered">
         <thead>
           <tr>
             <th>Name</th>

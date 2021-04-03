@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { postItem } from '../services/get_list';
+import store from '../store';
+
+import { createPost } from '../actions/postActions';
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const PostForm = () => {
   const defaultPost = {
@@ -18,14 +23,11 @@ const PostForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postItem('posts', {...post})
-      .then((data) => {
-        console.log(data);
-      })
+    store.dispatch(createPost({...post}));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="form">
       <label htmlFor="title">Title</label>
       <br/>
 
@@ -45,8 +47,8 @@ const PostForm = () => {
         onChange={handleChange} />
       
       <br/>
-      <button type="submit">Submit</button>
-    </form>
+      <Button type="submit">Submit</Button>
+    </Form>
   )
 };
 
