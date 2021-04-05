@@ -4,22 +4,30 @@ import Post from './Post';
 import PropTypes from 'prop-types';
 
 // connects components to redux stores
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
-import store from '../store';
 
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Posts = (props) => {
-  const postItems = props.posts.map((post) =>{
+function Posts() {
+  const selectPosts = (state) => {
+    console.log('I am in select posts');
+    console.log(state);
+    return state.posts.items;
+  };
+
+  const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
+
+  const postItems = posts.map((post) =>{
     return <Post post={post} key={post.id}/>
   });
 
   // check the doc of useEffect
   // this will be called single time
   useEffect(() => {
-    console.log('fetch posts');
-    store.dispatch(fetchPosts());
+    console.log('I am in dispatcher, from useeffect');
+    dispatch(fetchPosts());
   }, []);
 
   return (
@@ -34,13 +42,8 @@ const Posts = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
-  posts: state.posts.items
-});
-
-
 Posts.propTypes = {
   posts: PropTypes.array
 }
 
-export default connect(mapStateToProps, { fetchPosts })(Posts);
+export default Posts;

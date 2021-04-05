@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { createPost } from '../actions/postActions';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {connect} from 'react-redux';
+import { createPost } from '../actions/postActions';
 
-const PostForm = ({createNewPost}) => {
+const PostForm = () => {
   const defaultPost = {
     title: '', 
     body: ''
@@ -23,7 +22,7 @@ const PostForm = ({createNewPost}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNewPost({...post});
+    createPost({...post});
   };
 
   return (
@@ -52,13 +51,9 @@ const PostForm = ({createNewPost}) => {
   )
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  createNewPost: payload => dispatch(createPost(payload))
-})
-
 PostForm.propTypes = {
   handleSubmit: PropTypes.func,
-  createNewPost: PropTypes.func
+  createPost:   PropTypes.func.isRequired
 }
 
-export default connect(null, mapDispatchToProps)(PostForm);
+export default connect(null, { createPost })(PostForm);

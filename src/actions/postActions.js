@@ -2,6 +2,7 @@ import { FETCH_POSTS, NEW_POST } from './types';
 
 // es7 syntax
 export function fetchPosts() {
+  console.log('I am in action');
   return (dispatch) => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
@@ -13,6 +14,7 @@ export function fetchPosts() {
 }
 
 export function createPost(postData) {
+  console.log('action called');
   return(dispatch) => {
     fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',
