@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const Post = (props) => {
   //console.log(props);
 
   return (
     <Fragment>
-      <h3>{props.post.title}</h3>
+      <h3><NavLink to={`posts/${props.post.id}`}>{props.post.title}</NavLink></h3>
       <p>{props.post.body}</p>
     </Fragment>
   );

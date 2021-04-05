@@ -9,6 +9,7 @@ import Home from './Home';
 
 import {BrowserRouter, NavLink, Route, Switch} from 'react-router-dom';
 import PostForm from './Post/PostForm';
+import Post from './Post/Post';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route exact path='/posts' component={Posts} />
         <Route exact path='/users' component={Users} />
         <Route exact path='/posts/new' component={PostForm} />
+        <Route path='/posts/:postId' component={Post} />
       </Switch>
       
       </div>
