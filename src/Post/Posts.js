@@ -34,7 +34,7 @@ function Posts() {
     <Fragment>
       <h1>
         Posts
-        <small><NavLink to={'/posts/new'} className="nav-link btn btn-primary" exact>New Post</NavLink></small>
+        <small className="float-right"><NavLink to={'/posts/new'} className="nav-link btn btn-primary" exact>New Post</NavLink></small>
       </h1>
       <hr/>
       {postItems}
