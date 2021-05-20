@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 15.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15.1'
+      - name: Install yarn and unittest
+        run: |
+          yarn
+          yarn test
+        env:
+          CI: true
+      - name: Publish to Github Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: skarmakar/react-tutorial/docker-react-tutorial
+          registry: docker.pkg.github.com
+          username: ${{ secrets.REACT_TUTORIAL_USERNAME }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: Dockerfile
+          tags: latest
